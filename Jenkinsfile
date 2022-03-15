@@ -9,7 +9,7 @@ pipeline {
                 sh '''
                 echo "${SCANNER_HOME}"
                 '''
-                withSonarQubeEnv('SonarCloud') {
+                withSonarQubeEnv('sonarDOTT') {
                 sh 'cd ./cidr_convert_api/python/'
                 sh '${SCANNER_HOME}/bin/sonar-scanner'
                 }
