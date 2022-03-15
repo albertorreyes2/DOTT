@@ -12,6 +12,7 @@ pipeline {
                 withSonarQubeEnv('SonarCloud') {
                 sh 'cd ./cidr_convert_api/python/'
                 sh '${SCANNER_HOME}/bin/sonar-scanner'
+                }
             }
         }
         stage('Test') {
