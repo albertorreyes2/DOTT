@@ -1,3 +1,4 @@
+from netaddr import IPAddress
 import socket
 import struct
 
@@ -10,8 +11,8 @@ class CidrMaskConvert:
         return str(val)
 
     def mask_to_cidr(self, val):
-        return val
-
+        val = IPAddress(val).netmask_bits()
+        return str(val)
 
 
 class IpValidate:
