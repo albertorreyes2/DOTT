@@ -24,7 +24,7 @@ pipeline {
                 python --version
                 cd ./cidr_convert_api/python/
                 pip install -r requirements.txt
-                python3 tests.py 
+                python tests.py 
                 '''                
                 }
             }
