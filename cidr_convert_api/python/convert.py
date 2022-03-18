@@ -7,13 +7,22 @@ import ipaddress
 class CidrMaskConvert:
 
     def cidr_to_mask(self, val):
-        host_bits = 32 - int(val)
-        val = socket.inet_ntoa(struct.pack('!I', (1 << 32) - (1 << host_bits)))
-        return str(val)
+        if (int(val) >= 1 and int(val) <= 32):
+            host_bits = 32 - int(val)
+            val = socket.inet_ntoa(struct.pack('!I', (1 << 32) - (1 << host_bits)))
+            return str(val)
+        else:
+            return 'Invalid'
         
     def mask_to_cidr(self, val):
-        val = IPAddress(val).netmask_bits()
-        return str(val)
+        if val != '0.0.0.0' and IpValidate.ipv4_validation(self,val) == True and self.ipv4_mask_len(val) == True:
+            try:
+                val = IPAddress(val).netmask_bits()
+                return str(val)
+            except:
+                return 'Invalid'
+        else:
+            return 'Invalid'
 
     def ipv4_mask_len(self, val):
         a, b, c, d = (int(octet) for octet in val.split("."))
@@ -32,8 +41,11 @@ class CidrMaskConvert:
            return False
         return True
 
-
 class IpValidate:
 
     def ipv4_validation(self, val):
+        try:
             ip = ipaddress.ip_address(val)
+            return True
+        except ValueError:
+            return False
