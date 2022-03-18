@@ -21,6 +21,7 @@ pipeline {
                 sh ''' 
                 python --version
                 cd ./cidr_convert_api/python/
+                pip install netaddr
                 pip install -r requirements.txt
                 python tests.py 
                 '''                
