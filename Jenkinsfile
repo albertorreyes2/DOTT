@@ -17,14 +17,13 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'U Testing..'
+                echo 'Unit testing'
                 sh ''' 
-                python --version
-                cd ./DOTT/cidr_convert_api/python/
+                python3 --version
+                cd ./cidr_convert_api/python/
                 pip install -r requirements.txt
-                python tests.py 
-                pwd
-                '''
+                python3 tests.py 
+                '''                
             }
         }
         
