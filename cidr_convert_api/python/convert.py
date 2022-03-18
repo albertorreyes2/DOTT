@@ -1,5 +1,4 @@
 # These functions need to be implemented
-from netaddr import IPAddress
 import socket
 import struct
 import ipaddress
