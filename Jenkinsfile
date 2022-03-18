@@ -23,6 +23,7 @@ pipeline {
                 cd ./DOTT/cidr_convert_api/python/
                 pip install -r requirements.txt
                 python tests.py 
+                pwd
                 '''
             }
         }
