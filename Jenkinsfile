@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         SCANNER_HOME= tool 'sonarDOTT'
+        CONTAINER_ID=$(docker ps -alq)
     }
     stages {
         stage('Build') {
@@ -29,10 +30,6 @@ pipeline {
         }
         
         stage('Build img') {
-            environment {
-                CONTAINER_ID=$(docker ps -alq)
-            }
-            
             steps {
                 sh '''
                 cd ./cidr_convert_api/python/
