@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                ENVYROMENTNTBLABLAENIMAGEN{
+                withPythonEnv('python3'){
                 echo 'Unit testing'
                 sh ''' 
                 python3 --version
