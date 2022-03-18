@@ -17,13 +17,16 @@ pipeline {
         }
         stage('Test') {
             steps {
+                ENVYROMENTNTBLABLAENIMAGEN{
                 echo 'Unit testing'
                 sh ''' 
                 python3 --version
+                python --version
                 cd ./cidr_convert_api/python/
                 pip install -r requirements.txt
                 python3 tests.py 
                 '''                
+                }
             }
         }
         
