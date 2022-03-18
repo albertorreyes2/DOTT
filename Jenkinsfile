@@ -29,9 +29,16 @@ pipeline {
         }
         
         stage('Build img') {
+            environment {
+                CONTAINER_ID=$(docker ps -alq)
+            }
+            
             steps {
                 sh '''
                 cd ./cidr_convert_api/python/
+                pip freeze > requirements.txt
+                echo $CONTAINER_ID
+                docker build -t dkvs
                 '''
             }
         }
