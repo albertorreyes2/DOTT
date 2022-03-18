@@ -19,10 +19,10 @@ pipeline {
             steps {
                 echo 'U Testing..'
                 sh ''' 
-                python3 --version
+                python --version
                 cd ./cidr_convert_api/python/
                 pip install -r requirements.txt
-                python3 tests.py 
+                python tests.py 
                 '''
             }
         }
