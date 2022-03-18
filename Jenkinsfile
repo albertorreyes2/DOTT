@@ -2,7 +2,6 @@ pipeline {
     agent any
     environment {
         SCANNER_HOME= tool 'sonarDOTT'
-        CONTAINER_ID= sh(script: "docker ps -alqx", returnStdout: true).trim()
     }
     stages {
         stage('Build') {
@@ -24,7 +23,6 @@ pipeline {
                 cd ./cidr_convert_api/python/
                 cat requirements.txt
                 pip install -r requirements.txt
-                docker ps -alqx
                 python3 tests.py 
                 '''                
             }
