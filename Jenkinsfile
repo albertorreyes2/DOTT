@@ -17,7 +17,6 @@ pipeline {
         }
         stage('Test') {
             steps {
-                withPythonEnv('python'){
                 echo 'Unit testing'
                 sh ''' 
                 python --version
@@ -25,7 +24,6 @@ pipeline {
                 pip install -r requirements.txt
                 python tests.py 
                 '''                
-                }
             }
         }
         
