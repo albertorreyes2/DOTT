@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         SCANNER_HOME= tool 'sonarDOTT'
+        CONTAINER_ID= sh '''docker ps -alq '''
     }
     stages {
         stage('Build') {
@@ -27,12 +28,18 @@ pipeline {
                 '''                
             }
         }
-        
+
         stage('Build img') {
+            environment {
+                CONTAINER_ID=$(docker ps -alq)
+            }
+
             steps {
                 sh '''
                 cd ./cidr_convert_api/python/
-                pwd
+                pip freeze > requirements.txt
+                echo $CONTAINER_ID
+                docker build -t dkvs
                 '''
             }
         }
