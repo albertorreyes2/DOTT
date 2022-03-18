@@ -3,6 +3,7 @@ FROM python:3-alpine
 WORKDIR /app
 
 COPY ./cidr_convert_api/python/requirements.txt /app
+RUN pip uninstall -r requirements.txt
 RUN pip install -r requirements.txt
 
 COPY . .
