@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         SCANNER_HOME= tool 'sonarDOTT'
-        CONTAINER_ID= sh '''docker ps -alq '''
+        CONTAINER_ID= sh sh(script: "docker ps -alqx", returnStdout: true).trim()
     }
     stages {
         stage('Build') {
