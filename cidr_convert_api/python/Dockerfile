@@ -2,8 +2,10 @@ FROM python:3-alpine
 
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+COPY ./DOTT/cidr_conver_api/python/requirements.txt
+RUN pip3 install -r requirements.txt
+
+pwd
 
 COPY . .
 CMD ["ash", "-c", "python api.py"]

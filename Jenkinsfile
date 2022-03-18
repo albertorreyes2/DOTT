@@ -17,9 +17,24 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                echo 'U Testing..'
+                sh ''' 
+                python3 --version
+                cd ./cidr_convert_api/python/
+                pip install -r requirements.txt
+                python3 tests.py 
+                '''
             }
         }
+        
+        stage('Build img') {
+            steps {
+                sh '''
+                cd ./cidr_convert_api/python/
+                '''
+            }
+        }
+        
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
